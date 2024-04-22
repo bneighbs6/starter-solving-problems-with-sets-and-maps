@@ -19,21 +19,21 @@
  * convert solution to an array and return it
  */
 function sumPairs(A, N) {
-    const numbers = new Map();
-    const solution = new Map();
-
-    for (let elem of A) {
-        numbers.set(elem, undefined);
+    const numbers = new Map(); // Initialize new Map called numbers
+    const solution = new Map(); // Initialize new Map called solution
+    for (let e of A) { // for each element e of a 
+      numbers.set(e, e); // add e to numbers
     }
-
-    for (let elem of A) {
-        let diff = N - elem;
-        if (diff !== elem && numbers.has(diff)) {
-            solution.set([elem, diff], undefined);
+    for (let e of A) { // for each element e of a 
+      let diff = N - e; // calculate diff = N - e
+      if (diff !== e) { 
+        if (numbers.has(diff)) { // if diff in in numbers then
+          solution.set(Math.min(e, diff), Math.max(e, diff)); // add [e, diff] to the solution
         }
+      }
     }
-
-    return [...solution.keys()];
-}
+  
+    return [...solution]; // convert solution to an array and return it
+  }
 
 module.exports = sumPairs;
